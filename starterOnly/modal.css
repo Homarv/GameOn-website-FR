@@ -527,3 +527,30 @@ footer {
   }
 }
 
+.alert-first{
+  display: none;
+}
+
+.alert-last{
+  display: none;
+}
+
+.alert-email{
+  display: none;
+}
+
+.alert-birthdate{
+  display: none;
+}
+
+.alert-participation{
+  display: none;
+}
+
+.alert-location{
+  display: none;
+}
+
+.alert-condition-general{
+  display: none;
+}
