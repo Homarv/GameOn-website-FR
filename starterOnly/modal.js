@@ -90,7 +90,7 @@ function validateEmail(){
 function validateBirthdate(){  
   today = new Date()
   birthday = new Date(inputBirthdate.value)
-  if (today.getTime() < birthday.getTime()){
+  if (isNaN(birthday.getTime()) || today.getTime() < birthday.getTime()){
     alertBirthdate.style.display="block";
   }
   else {
@@ -149,6 +149,7 @@ function validateSubmit(){
   validateGeneralCondition() === 1)
   {
     closeModal()
+    window.alert("Merci ! Votre réservation a été reçue.")
   }
 }
 
