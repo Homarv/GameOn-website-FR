@@ -45,24 +45,30 @@ function closeModal() {
 	modalbg.style.display = "none";
 }
 
-//add red color on Input 
-function addClassListAlertOnInput(input){
-	input.classList.add("input-alert")
+//open confirmation modal 
+function openConfirmationModal() {
+
 }
 
-function removeClassListAlertOnInput(input){
-	input.classList.remove("input-alert")
+// close confirmation modal  
+function closeConfirmationModal(){
+
 }
 
+function addMessageError(input){
+	input.parentElement.setAttribute("data-error-visible", true)
+}
+
+function removeMessageError(input){
+	input.parentElement.removeAttribute("data-error-visible", true)
+}
 
 // alert for validate First and Last 
 function validateFirst() {
 	if (inputFirst.value.length < 2) {
-		addClassListAlertOnInput(inputFirst)
-		alertFirst.style.display = "block";
+		addMessageError(inputFirst)
 	} else {
-		alertFirst.style.display = "none";
-		removeClassListAlertOnInput(inputFirst)
+		removeMessageError(inputFirst)
 		return true;
 	}
 }
@@ -155,8 +161,8 @@ function validateSubmit() {
 			validateLocation() *
 			validateGeneralCondition() ===
 		1
-	) {
+	){
 		closeModal();
-		window.alert("Merci ! Votre réservation a été reçue.");
+		openConfirmation();
 	}
 }
