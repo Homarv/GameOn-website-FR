@@ -24,6 +24,7 @@ const inputBirthdate = document.querySelector("#birthdate");
 const alertBirthdate = document.querySelector(".alert-birthdate");
 const inputParticipation = document.querySelector("#quantity");
 const alertParticipation = document.querySelector(".alert-participation");
+const checkboxLocation = document.querySelectorAll(".checkbox-input")
 const alertLocation = document.querySelector(".alert-location");
 const inputConditionGeneral = document.querySelector("#checkbox1");
 const alertConditionGeneral = document.querySelector(".alert-condition-general");
@@ -44,12 +45,24 @@ function closeModal() {
 	modalbg.style.display = "none";
 }
 
+//add red color on Input 
+function addClassListAlertOnInput(input){
+	input.classList.add("input-alert")
+}
+
+function removeClassListAlertOnInput(input){
+	input.classList.remove("input-alert")
+}
+
+
 // alert for validate First and Last 
 function validateFirst() {
 	if (inputFirst.value.length < 2) {
+		addClassListAlertOnInput(inputFirst)
 		alertFirst.style.display = "block";
 	} else {
 		alertFirst.style.display = "none";
+		removeClassListAlertOnInput(inputFirst)
 		return true;
 	}
 }
@@ -58,8 +71,10 @@ function validateFirst() {
 function validateLast() {
 	if (inputLast.value.length < 2) {
 		alertLast.style.display = "block";
+		addClassListAlertOnInput(inputLast)
 	} else {
 		alertLast.style.display = "none";
+		removeClassListAlertOnInput(inputLast)
 		return true;
 	}
 }
@@ -70,9 +85,11 @@ const regexpEmail =
 function validateEmail() {
 	if (inputEmail.value.match(regexpEmail)) {
 		alertEmail.style.display = "none";
+		removeClassListAlertOnInput(inputEmail)
 		return true;
 	} else {
 		alertEmail.style.display = "block";
+		addClassListAlertOnInput(inputEmail)
 	}
 }
 
@@ -82,8 +99,10 @@ function validateBirthdate() {
 	birthday = new Date(inputBirthdate.value);
 	if (isNaN(birthday.getTime()) || today.getTime() < birthday.getTime()) {
 		alertBirthdate.style.display = "block";
+		addClassListAlertOnInput(inputBirthdate)
 	} else {
 		alertBirthdate.style.display = "none";
+		removeClassListAlertOnInput(inputBirthdate)
 		return true;
 	}
 }
@@ -94,9 +113,11 @@ const regexpNumber = /[0-99]/;
 function validateParticipation() {
 	if (inputParticipation.value.match(regexpNumber)) {
 		alertParticipation.style.display = "none";
+		removeClassListAlertOnInput(inputParticipation)
 		return true;
 	} else {
 		alertParticipation.style.display = "block";
+		addClassListAlertOnInput(inputParticipation)
 	}
 }
 
