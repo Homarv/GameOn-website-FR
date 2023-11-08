@@ -75,7 +75,9 @@
                  /><br>
               </div>
               <div
-                class="formData">
+                class="formData"
+                data-error="Veuillez entrer 2 caractères ou plus pour le champ du nom"
+                >
                 <label for="last">Nom</label><br>
                 <input
                   class="text-control"
@@ -85,7 +87,9 @@
                 /><br>
               </div>
               <div
-                class="formData">
+                class="formData"
+                data-error="Veuillez entrer 1 adresse mail valide"
+                >
                 <label for="email">E-mail</label><br>
                 <input
                   class="text-control"
@@ -95,7 +99,9 @@
                 /><br>
               </div>
               <div
-                class="formData">
+                class="formData"
+                data-error="Veuillez entrer 1 date de naissance valide"
+                >
                 <label for="birthdate">Date de naissance</label><br>
                 <input
                   class="text-control"
@@ -105,13 +111,17 @@
                 /><br>
               </div>
               <div
-                class="formData">
+                class="formData"
+                data-error="Veuillez entrer le nombre de tournois effectués"
+                >
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
               <div
-                class="formData">
+                class="formData"
+                data-error="Veuillez sélectionner une ville"
+                >
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -181,7 +191,9 @@
               </div>
 
               <div
-                class="formData">
+                class="formData"
+                data-error="Veuillez accepter les conditions générales"
+                >
                 <input
                   class="checkbox-input"
                   type="checkbox"

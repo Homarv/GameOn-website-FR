@@ -15,19 +15,12 @@ const formData = document.querySelectorAll(".formData");
 const submitBtn = document.querySelector(".btn-submit");
 const modalClose = document.querySelector(".close");
 const inputFirst = document.querySelector("#first");
-const alertFirst = document.querySelector(".alert-first");
 const inputLast = document.querySelector("#last");
-const alertLast = document.querySelector(".alert-last");
 const inputEmail = document.querySelector("#email");
-const alertEmail = document.querySelector(".alert-email");
 const inputBirthdate = document.querySelector("#birthdate");
-const alertBirthdate = document.querySelector(".alert-birthdate");
 const inputParticipation = document.querySelector("#quantity");
-const alertParticipation = document.querySelector(".alert-participation");
-const checkboxLocation = document.querySelectorAll(".checkbox-input")
-const alertLocation = document.querySelector(".alert-location");
+const firstCheckboxLocation = document.querySelector(".checkbox-input")
 const inputConditionGeneral = document.querySelector("#checkbox1");
-const alertConditionGeneral = document.querySelector(".alert-condition-general");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -64,38 +57,25 @@ function removeMessageError(input){
 }
 
 // alert for validate First and Last 
-function validateFirst() {
-	if (inputFirst.value.length < 2) {
-		addMessageError(inputFirst)
+function validateName(input) {
+	if (input.value.length < 2) {
+		addMessageError(input)
 	} else {
-		removeMessageError(inputFirst)
+		removeMessageError(input)
 		return true;
 	}
 }
 
-// alert for validate Last
-function validateLast() {
-	if (inputLast.value.length < 2) {
-		alertLast.style.display = "block";
-		addClassListAlertOnInput(inputLast)
-	} else {
-		alertLast.style.display = "none";
-		removeClassListAlertOnInput(inputLast)
-		return true;
-	}
-}
 
 // alert for validate Email
 const regexpEmail =
 	/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 function validateEmail() {
 	if (inputEmail.value.match(regexpEmail)) {
-		alertEmail.style.display = "none";
-		removeClassListAlertOnInput(inputEmail)
+		removeMessageError(inputEmail)
 		return true;
 	} else {
-		alertEmail.style.display = "block";
-		addClassListAlertOnInput(inputEmail)
+		addMessageError(inputEmail)
 	}
 }
 
@@ -104,11 +84,9 @@ function validateBirthdate() {
 	today = new Date();
 	birthday = new Date(inputBirthdate.value);
 	if (isNaN(birthday.getTime()) || today.getTime() < birthday.getTime()) {
-		alertBirthdate.style.display = "block";
-		addClassListAlertOnInput(inputBirthdate)
+		addMessageError(inputBirthdate)
 	} else {
-		alertBirthdate.style.display = "none";
-		removeClassListAlertOnInput(inputBirthdate)
+		removeMessageError(inputBirthdate)
 		return true;
 	}
 }
@@ -118,21 +96,19 @@ const regexpNumber = /[0-99]/;
 
 function validateParticipation() {
 	if (inputParticipation.value.match(regexpNumber)) {
-		alertParticipation.style.display = "none";
-		removeClassListAlertOnInput(inputParticipation)
+		removeMessageError(inputParticipation)
 		return true;
 	} else {
-		alertParticipation.style.display = "block";
-		addClassListAlertOnInput(inputParticipation)
+		addMessageError(inputParticipation)
 	}
 }
 
 // alert for validate Location
 function validateLocation() {
 	if (document.querySelector('input[name="location"]:checked') === null) {
-		alertLocation.style.display = "block";
+		addMessageError(firstCheckboxLocation)
 	} else {
-		alertLocation.style.display = "none";
+		removeMessageError(firstCheckboxLocation)
 		return true;
 	}
 }
@@ -140,9 +116,9 @@ function validateLocation() {
 // alert for validate Location
 function validateGeneralCondition() {
 	if (inputConditionGeneral.checked === false) {
-		alertConditionGeneral.style.display = "block";
+		addMessageError(inputConditionGeneral)
 	} else {
-		alertConditionGeneral.style.display = "none";
+		removeMessageError(inputConditionGeneral)
 		return true;
 	}
 }
@@ -153,8 +129,8 @@ submitBtn.addEventListener("click", validateSubmit);
 // alert for validate Submit
 function validateSubmit() {
 	if (
-		validateFirst() *
-			validateLast() *
+		validateName(inputFirst) *
+			validateName(inputLast) *
 			validateEmail() *
 			validateBirthdate() *
 			validateParticipation() *
