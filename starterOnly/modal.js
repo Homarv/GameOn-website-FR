@@ -22,30 +22,22 @@ const inputParticipation = document.querySelector("#quantity");
 const firstCheckboxLocation = document.querySelector(".checkbox-input")
 const inputConditionGeneral = document.querySelector("#checkbox1");
 
-// launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+// launch modal form event
+modalBtn.forEach((btn) => btn.addEventListener("click", () => launchModal(modalbg)));
 
-// launch modal form
-function launchModal() {
-	modalbg.style.display = "block";
+// close modal form event
+modalClose.addEventListener("click", () => closeModal(modalbg));
+
+console.log(modalbg)
+
+// open modal 
+function launchModal(modal) {
+	modal.style.display = "block";
 }
 
-// close modal event
-modalClose.addEventListener("click", closeModal);
-
-// close modal form
-function closeModal() {
-	modalbg.style.display = "none";
-}
-
-//open confirmation modal 
-function openConfirmationModal() {
-
-}
-
-// close confirmation modal  
-function closeConfirmationModal(){
-
+// close modal 
+function closeModal(modal) {
+	modal.style.display = "none";
 }
 
 function addMessageError(input){
@@ -56,9 +48,14 @@ function removeMessageError(input){
 	input.parentElement.removeAttribute("data-error-visible", true)
 }
 
-// alert for validate First and Last 
+// function to check First and Last 
 function validateName(input) {
-	if (input.value.length < 2) {
+	const name = input.value.trim(); // Supprime les espaces avant et après le nom
+  const regex = /^[a-zA-Z]+$/ // uniquement des lettres 
+	if (name===""){
+		addMessageError(input)
+	}
+	if (name.value.length < 2 || !regex.test(name)) {
 		addMessageError(input)
 	} else {
 		removeMessageError(input)
@@ -66,11 +63,10 @@ function validateName(input) {
 	}
 }
 
-
-// alert for validate Email
-const regexpEmail =
-	/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+// afunction to check Email
 function validateEmail() {
+	const regexpEmail =
+	/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	if (inputEmail.value.match(regexpEmail)) {
 		removeMessageError(inputEmail)
 		return true;
@@ -79,7 +75,7 @@ function validateEmail() {
 	}
 }
 
-// alert for validate birthdate
+// function to check birthdate
 function validateBirthdate() {
 	today = new Date();
 	birthday = new Date(inputBirthdate.value);
@@ -91,10 +87,9 @@ function validateBirthdate() {
 	}
 }
 
-// alert for particaption
-const regexpNumber = /[0-99]/;
-
+// function to check particaption
 function validateParticipation() {
+	const regexpNumber = /[0-99]/;
 	if (inputParticipation.value.match(regexpNumber)) {
 		removeMessageError(inputParticipation)
 		return true;
@@ -103,7 +98,7 @@ function validateParticipation() {
 	}
 }
 
-// alert for validate Location
+// function to check Location
 function validateLocation() {
 	if (document.querySelector('input[name="location"]:checked') === null) {
 		addMessageError(firstCheckboxLocation)
@@ -113,7 +108,7 @@ function validateLocation() {
 	}
 }
 
-// alert for validate Location
+// function to check General Condition
 function validateGeneralCondition() {
 	if (inputConditionGeneral.checked === false) {
 		addMessageError(inputConditionGeneral)
