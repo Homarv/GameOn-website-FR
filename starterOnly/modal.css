@@ -160,7 +160,6 @@ main {
   top: 0;
   height: 100%;
   width: 100%;
-  overflow: auto;
   background-color: rgba(26, 39, 156, 0.4);
 }
 
@@ -176,6 +175,25 @@ main {
   position: relative;
   color: #fff;
   padding-top: 10px;
+}
+
+.content__confirmation{
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+}
+
+.modal-body__confirmation{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.modal-confirmation-close-btn {
+  position: absolute;
+  bottom: 20px
 }
 
 .modal-body {

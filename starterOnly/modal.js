@@ -11,9 +11,11 @@ function editNav() {
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
+const modalClose = document.querySelector(".close");
+const modalConfirmation = document.querySelector(".modal-confirmation")
+const modalConfirmationCloseBtns = document.querySelectorAll(".modal-confirmation-close-btn")
 const formData = document.querySelectorAll(".formData");
 const submitBtn = document.querySelector(".btn-submit");
-const modalClose = document.querySelector(".close");
 const inputFirst = document.querySelector("#first");
 const inputLast = document.querySelector("#last");
 const inputEmail = document.querySelector("#email");
@@ -28,7 +30,9 @@ modalBtn.forEach((btn) => btn.addEventListener("click", () => launchModal(modalb
 // close modal form event
 modalClose.addEventListener("click", () => closeModal(modalbg));
 
-console.log(modalbg)
+//close confirmation modal 
+modalConfirmationCloseBtns.forEach((btn) => btn.addEventListener("click", () => closeModal(modalConfirmation)));
+
 
 // open modal 
 function launchModal(modal) {
@@ -45,17 +49,14 @@ function addMessageError(input){
 }
 
 function removeMessageError(input){
-	input.parentElement.removeAttribute("data-error-visible", true)
+	input.parentElement.removeAttribute("data-error-visible")
 }
 
 // function to check First and Last 
 function validateName(input) {
 	const name = input.value.trim(); // Supprime les espaces avant et après le nom
   const regex = /^[a-zA-Z]+$/ // uniquement des lettres 
-	if (name===""){
-		addMessageError(input)
-	}
-	if (name.value.length < 2 || !regex.test(name)) {
+	if (name.length < 2 || !regex.test(name)) {
 		addMessageError(input)
 	} else {
 		removeMessageError(input)
@@ -133,7 +134,8 @@ function validateSubmit() {
 			validateGeneralCondition() ===
 		1
 	){
-		closeModal();
-		openConfirmation();
+		closeModal(modalbg);
+		launchModal(modalConfirmation)
 	}
 }
+
