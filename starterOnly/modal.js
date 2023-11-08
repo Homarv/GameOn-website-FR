@@ -1,3 +1,4 @@
+// function to add classname for dropdown btn list responsive 
 function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -44,13 +45,6 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
-///CONSIGNES 
-///Après une validation réussie, inclure un message de confirmation de la 
-///soumission réussie pour l'utilisateur (ex. "Merci ! Votre réservation a été reçue.")
-/// TRADUCTION
-    /// si => all case are ok 
-    /// alert => "Merci ! Votre réservation a été reçue."
-
 // alert for validate First
 function validateFirst(){  
   if (inputFirst.value.length < 2 ){
@@ -74,7 +68,6 @@ function validateLast(){
 }
 
 // alert for validate Email
-
 const regexpEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 function validateEmail(){  
   if (inputEmail.value.match(regexpEmail) ){    
@@ -137,7 +130,6 @@ function validateGeneralCondition(){
 // launch submit event 
 submitBtn.addEventListener("click", validateSubmit);
 
-
 // alert for validate Submit
 function validateSubmit(){  
   if (validateFirst()*
@@ -153,15 +145,3 @@ function validateSubmit(){
   }
 }
 
-//// CONSIGNE 
-/////Des messages d'erreur spécifiques doivent apparaître sous l'entrée qui n'est pas correcte. Les messages d'erreur doivent s'afficher sous le champ de saisie associé. Exemples :
-///"Veuillez entrer 2 caractères ou plus pour le champ du nom."
-///"Vous devez choisir une option."
-///"Vous devez vérifier que vous acceptez les termes et conditions."
-///"Vous devez entrer votre date de naissance."
-
-////TRADUCTION 
-
-//// TANT QUE "NOM"> 2 caractères
-//// Modal reste ouverte 
-//// add en dessous afficher => "Veuillez entrer 2 caractères ou plus pour le champ du nom.
