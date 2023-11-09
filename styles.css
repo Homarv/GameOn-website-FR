@@ -87,6 +87,7 @@
   height: 100%;
   width: 100%;
   background-color: rgba(26, 39, 156, 0.4);
+  overflow-y: auto;
 }
 
 .content {
@@ -460,6 +461,11 @@ main {
   display: none;
 }
 
+@media screen and (max-width: 960px) {
+  .hero-headline {
+    white-space: normal;
+  }
+}
 @media screen and (max-width: 800px) {
   .hero-section {
     display: block;

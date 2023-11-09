@@ -12,8 +12,10 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const modalClose = document.querySelector(".close");
-const modalConfirmation = document.querySelector(".modal-confirmation")
-const modalConfirmationCloseBtns = document.querySelectorAll(".modal-confirmation-close-btn")
+const modalConfirmation = document.querySelector(".modal-confirmation");
+const modalConfirmationCloseBtns = document.querySelectorAll(
+	".modal-confirmation-close-btn"
+);
 const formData = document.querySelectorAll(".formData");
 const submitBtn = document.querySelector(".btn-submit");
 const inputFirst = document.querySelector("#first");
@@ -21,45 +23,50 @@ const inputLast = document.querySelector("#last");
 const inputEmail = document.querySelector("#email");
 const inputBirthdate = document.querySelector("#birthdate");
 const inputParticipation = document.querySelector("#quantity");
-const firstCheckboxLocation = document.querySelector(".checkbox-input")
+const firstCheckboxLocation = document.querySelector(".checkbox-input");
 const inputConditionGeneral = document.querySelector("#checkbox1");
 
 // launch modal form event
-modalBtn.forEach((btn) => btn.addEventListener("click", () => launchModal(modalbg)));
+modalBtn.forEach((btn) =>
+	btn.addEventListener("click", () => launchModal(modalbg))
+);
 
 // close modal form event
 modalClose.addEventListener("click", () => closeModal(modalbg));
 
-//close confirmation modal 
-modalConfirmationCloseBtns.forEach((btn) => btn.addEventListener("click", () => closeModal(modalConfirmation)));
+//close confirmation modal
+modalConfirmationCloseBtns.forEach((btn) =>
+	btn.addEventListener("click", () => closeModal(modalConfirmation))
+);
 
-
-// open modal 
+// open modal
 function launchModal(modal) {
 	modal.style.display = "block";
+	document.body.style.position = "fixed";
 }
 
-// close modal 
+// close modal
 function closeModal(modal) {
 	modal.style.display = "none";
+	document.body.style.position = "";
 }
 
-function addMessageError(input){
-	input.parentElement.setAttribute("data-error-visible", true)
+function addMessageError(input) {
+	input.parentElement.setAttribute("data-error-visible", true);
 }
 
-function removeMessageError(input){
-	input.parentElement.removeAttribute("data-error-visible")
+function removeMessageError(input) {
+	input.parentElement.removeAttribute("data-error-visible");
 }
 
-// function to check First and Last 
+// function to check First and Last
 function validateName(input) {
 	const name = input.value.trim(); // Supprime les espaces avant et après le nom
-  const regex = /^[a-zA-Z]+$/ // uniquement des lettres 
+	const regex = /^[a-zA-Z]+$/; // uniquement des lettres
 	if (name.length < 2 || !regex.test(name)) {
-		addMessageError(input)
+		addMessageError(input);
 	} else {
-		removeMessageError(input)
+		removeMessageError(input);
 		return true;
 	}
 }
@@ -67,12 +74,12 @@ function validateName(input) {
 // afunction to check Email
 function validateEmail() {
 	const regexpEmail =
-	/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	if (inputEmail.value.match(regexpEmail)) {
-		removeMessageError(inputEmail)
+		removeMessageError(inputEmail);
 		return true;
 	} else {
-		addMessageError(inputEmail)
+		addMessageError(inputEmail);
 	}
 }
 
@@ -81,9 +88,9 @@ function validateBirthdate() {
 	today = new Date();
 	birthday = new Date(inputBirthdate.value);
 	if (isNaN(birthday.getTime()) || today.getTime() < birthday.getTime()) {
-		addMessageError(inputBirthdate)
+		addMessageError(inputBirthdate);
 	} else {
-		removeMessageError(inputBirthdate)
+		removeMessageError(inputBirthdate);
 		return true;
 	}
 }
@@ -92,19 +99,19 @@ function validateBirthdate() {
 function validateParticipation() {
 	const regexpNumber = /[0-99]/;
 	if (inputParticipation.value.match(regexpNumber)) {
-		removeMessageError(inputParticipation)
+		removeMessageError(inputParticipation);
 		return true;
 	} else {
-		addMessageError(inputParticipation)
+		addMessageError(inputParticipation);
 	}
 }
 
 // function to check Location
 function validateLocation() {
 	if (document.querySelector('input[name="location"]:checked') === null) {
-		addMessageError(firstCheckboxLocation)
+		addMessageError(firstCheckboxLocation);
 	} else {
-		removeMessageError(firstCheckboxLocation)
+		removeMessageError(firstCheckboxLocation);
 		return true;
 	}
 }
@@ -112,9 +119,9 @@ function validateLocation() {
 // function to check General Condition
 function validateGeneralCondition() {
 	if (inputConditionGeneral.checked === false) {
-		addMessageError(inputConditionGeneral)
+		addMessageError(inputConditionGeneral);
 	} else {
-		removeMessageError(inputConditionGeneral)
+		removeMessageError(inputConditionGeneral);
 		return true;
 	}
 }
@@ -133,9 +140,8 @@ function validateSubmit() {
 			validateLocation() *
 			validateGeneralCondition() ===
 		1
-	){
+	) {
 		closeModal(modalbg);
-		launchModal(modalConfirmation)
+		launchModal(modalConfirmation);
 	}
 }
-
