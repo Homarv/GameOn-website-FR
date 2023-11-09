@@ -220,3 +220,15 @@ input[data-error]::after {
 .modal-btn:hover {
 	background: #3876ac;
 }
+
+@media screen and (max-width: 800px){
+  .content{
+    margin-top: 90px;
+  }
+}
+
+@media screen and (max-width: 500px){
+  .bground{
+    background-color: transparent;
+  }
+}

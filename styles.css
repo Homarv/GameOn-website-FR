@@ -309,6 +309,16 @@ input[data-error]::after {
   background: #3876ac;
 }
 
+@media screen and (max-width: 800px) {
+  .content {
+    margin-top: 90px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .bground {
+    background-color: transparent;
+  }
+}
 :root {
   --font-default: "DM Sans", Arial, Helvetica, sans-serif;
   --font-slab: var(--font-default);
