@@ -103,7 +103,6 @@
   color: #fff;
   padding-top: 10px;
 }
-
 .content__confirmation {
   height: 80%;
   display: flex;
@@ -281,7 +280,8 @@ input[data-error]::after {
 }
 
 .btn-submit,
-.btn-signup {
+.btn-signup,
+.btn-close {
   background: #fe142f;
   display: block;
   margin: 0 auto;
